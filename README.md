@@ -1,230 +1,209 @@
-# Project Name
+# GYG Supplier Dashboard
 
-A brief description of what this project does and who it's for.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [B2B Prototyping Strategy](#b2b-prototyping-strategy)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Installation
-
-Instructions on how to install and set up your project.
-
-```bash
-# Example installation commands
-git clone https://github.com/username/project-name.git
-cd project-name
-npm install
-```
-
-## Usage
-
-Provide examples and instructions on how to use your project.
-
-```bash
-# Example usage
-npm start
-```
+A modern, responsive web dashboard for GYG suppliers to monitor their reservation system performance and integration status. This dashboard serves as their source of truth for understanding how their products are performing on the GYG platform.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+### 📊 Performance Metrics
+- **Uptime Monitoring**: Real-time uptime percentages for 1 day, 7 days, and 30 days
+- **Error Rate Tracking**: Comprehensive error rate analysis with trend indicators
+- **Revenue Impact Analysis**: Lost revenue calculations and potential recovery estimates
+- **Color-coded Status**: Green (good), Yellow (warning), Red (critical) indicators
 
-## B2B Prototyping Strategy
+### 📈 Interactive Visualizations
+- **Uptime Trends**: Line charts showing performance over time
+- **Error Rate Patterns**: Area charts displaying error patterns
+- **Revenue Impact Timeline**: Visual representation of financial impact
+- **Downloadable Charts**: Export individual charts as PNG images
 
-### Overview
-This section outlines our comprehensive approach to prototyping in a B2B (Business-to-Business) environment, focusing on rapid iteration, stakeholder validation, and market fit.
+### 🏆 Competitive Benchmarking
+- **Industry Comparison**: Your performance vs. industry averages
+- **Percentile Rankings**: See where you stand among competitors
+- **Top Performers Analysis**: Benchmark against industry leaders
+- **Revenue Impact vs Peers**: Financial performance comparison
 
-### Phase 1: Discovery & Research (Week 1-2)
+### 💡 Actionable Recommendations
+- **Priority-ranked Actions**: High, medium, and low priority improvements
+- **Specific Suggestions**: Based on current performance metrics
+- **Resource Links**: Documentation and support resources
+- **Technical Support**: Direct contact information
 
-#### Customer Discovery
-- **Stakeholder Mapping**: Identify key decision-makers, influencers, and end-users
-- **Customer Interviews**: Conduct 15-20 interviews with potential customers
-- **Pain Point Analysis**: Document primary pain points and business challenges
-- **Competitive Analysis**: Research existing solutions and market gaps
+### 🎨 Modern Design
+- **Responsive Layout**: Works seamlessly on desktop and mobile
+- **Dark/Light Mode**: Toggle between themes
+- **Professional UI**: Clean, modern design with smooth animations
+- **Accessibility**: Keyboard shortcuts and screen reader support
 
-#### Market Validation
-- **Market Size Assessment**: Evaluate TAM, SAM, and SOM
-- **Buying Process Understanding**: Map the B2B purchasing journey
-- **Budget Allocation Research**: Understand budget cycles and decision timelines
+## File Structure
 
-### Phase 2: Problem Definition & Solution Design (Week 3-4)
+```
+gyg-supplier-dashboard/
+├── index.html          # Main dashboard page
+├── styles.css          # Custom styling and responsive design
+├── script.js           # Interactive functionality and charts
+├── data.js            # Mock data and data management
+└── README.md          # Project documentation
+```
 
-#### Problem Statement
-- **Core Problem**: Define the primary business problem to solve
-- **Success Metrics**: Establish KPIs and success criteria
-- **Risk Assessment**: Identify potential barriers to adoption
+## Technologies Used
 
-#### Solution Hypothesis
-- **Value Proposition**: Articulate clear value proposition for each stakeholder
-- **Feature Prioritization**: Use MoSCoW method (Must-have, Should-have, Could-have, Won't-have)
-- **Technical Feasibility**: Assess technical requirements and constraints
+- **HTML5**: Semantic markup and accessibility
+- **CSS3**: Modern styling with CSS Grid and Flexbox
+- **JavaScript (ES6+)**: Interactive functionality and data management
+- **Chart.js**: Professional data visualization
+- **Moment.js**: Date and time handling
+- **Font Awesome**: Icons and visual elements
+- **Google Fonts**: Typography (Inter font family)
 
-### Phase 3: Rapid Prototyping (Week 5-8)
+## Getting Started
 
-#### Prototype Development
-- **MVP Definition**: Build minimum viable product with core features
-- **User Journey Mapping**: Design complete user workflows
-- **Integration Planning**: Plan for existing system integrations
+### Prerequisites
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- No additional dependencies required (all libraries loaded via CDN)
 
-#### Prototyping Tools & Methods
-- **Wireframes & Mockups**: Use Figma, Sketch, or similar tools
-- **Interactive Prototypes**: Create clickable prototypes for user testing
-- **Technical Prototypes**: Build functional proof-of-concepts
-- **Data Mockups**: Simulate real data scenarios
+### Installation
+1. Clone or download the project files
+2. Open `index.html` in your web browser
+3. The dashboard will load automatically with mock data
 
-### Phase 4: Validation & Iteration (Week 9-12)
+### Usage
 
-#### User Testing Strategy
-- **Pilot Customer Program**: Recruit 3-5 pilot customers
-- **A/B Testing**: Test different approaches and features
-- **Feedback Collection**: Structured feedback sessions and surveys
-- **Usage Analytics**: Track user behavior and engagement metrics
+#### Viewing Metrics
+- **Performance Cards**: View uptime, error rates, and revenue impact at a glance
+- **Interactive Charts**: Hover over charts for detailed information
+- **Period Selectors**: Change time periods (7, 30, 90 days) for different views
 
-#### Stakeholder Validation
-- **Executive Presentations**: Present to C-level stakeholders
-- **Technical Reviews**: Validate with IT/technical teams
-- **Legal/Compliance Review**: Ensure regulatory compliance
-- **Security Assessment**: Address security and privacy concerns
+#### Exporting Data
+- **Individual Charts**: Click download button on each chart
+- **Full Report**: Use "Download Full Report (PDF)" button
+- **CSV Export**: Export raw data for analysis
+- **Share Functionality**: Share reports via email or native sharing
 
-### Phase 5: Go-to-Market Preparation (Week 13-16)
+#### Theme Switching
+- **Toggle Button**: Click the moon/sun icon in the bottom right
+- **Keyboard Shortcut**: Press `Ctrl/Cmd + D`
+- **Persistent**: Theme preference is saved in localStorage
 
-#### Market Entry Strategy
-- **Pricing Strategy**: Develop pricing models and tiers
-- **Sales Enablement**: Create sales materials and training
-- **Partnership Development**: Identify strategic partners and channels
-- **Customer Success Planning**: Design onboarding and support processes
+#### Keyboard Shortcuts
+- `Ctrl/Cmd + D`: Toggle dark/light mode
+- `Ctrl/Cmd + E`: Export data as CSV
+- `Ctrl/Cmd + P`: Generate PDF report
 
-#### Launch Preparation
-- **Beta Testing**: Conduct comprehensive beta testing
-- **Documentation**: Create user guides and technical documentation
-- **Support Infrastructure**: Set up customer support systems
-- **Marketing Materials**: Develop marketing collateral and messaging
+## Data Structure
 
-### Key Success Factors
+### Mock Data Includes
+- **Supplier Information**: Company name, ID, status
+- **Performance Metrics**: Uptime, error rates, response times
+- **Time Series Data**: Historical data for charts
+- **Benchmarking Data**: Industry averages and percentiles
+- **Recommendations**: Actionable improvement suggestions
+- **Alert History**: System notifications and warnings
 
-#### Stakeholder Management
-- **Executive Sponsorship**: Secure C-level support early
-- **Cross-functional Alignment**: Ensure all departments are aligned
-- **Regular Communication**: Maintain transparent communication channels
-- **Change Management**: Plan for organizational change adoption
+### Real-world Integration
+To integrate with real data:
+1. Replace mock data in `data.js` with API calls
+2. Update data structure to match your API response format
+3. Implement real-time data updates
+4. Add authentication and user management
 
-#### Technical Considerations
-- **Scalability**: Design for enterprise-scale deployment
-- **Integration**: Plan for existing system compatibility
-- **Security**: Implement enterprise-grade security measures
-- **Compliance**: Ensure regulatory compliance (GDPR, SOC2, etc.)
+## Customization
 
-#### Business Model Validation
-- **Revenue Model**: Test pricing and revenue streams
-- **Customer Acquisition Cost**: Optimize customer acquisition strategies
-- **Customer Lifetime Value**: Measure and improve customer retention
-- **Unit Economics**: Validate business model sustainability
+### Styling
+- **Color Scheme**: Modify CSS variables in `:root` selector
+- **Typography**: Change font family in CSS
+- **Layout**: Adjust grid and flexbox properties
+- **Animations**: Modify transition and animation properties
 
-### Risk Mitigation
+### Functionality
+- **Charts**: Customize Chart.js options in `script.js`
+- **Data Sources**: Replace mock data with real API endpoints
+- **Export Formats**: Add additional export options
+- **Notifications**: Implement real-time alerts
 
-#### Common B2B Prototyping Risks
-- **Long Sales Cycles**: Plan for extended decision-making processes
-- **Complex Stakeholder Networks**: Navigate multiple decision-makers
-- **Integration Challenges**: Address technical integration barriers
-- **Budget Constraints**: Work within customer budget limitations
-- **Regulatory Requirements**: Ensure compliance with industry regulations
+### Branding
+- **Logo**: Replace placeholder with actual company logo
+- **Colors**: Update primary and accent colors
+- **Typography**: Change font to match brand guidelines
+- **Icons**: Replace Font Awesome icons with custom ones
 
-#### Mitigation Strategies
-- **Early Customer Involvement**: Engage customers throughout the process
-- **Flexible Architecture**: Design for easy customization and integration
-- **Clear Value Communication**: Articulate ROI and business impact
-- **Pilot Programs**: Use pilot programs to de-risk larger deployments
-- **Iterative Development**: Build, measure, learn, and iterate quickly
+## Browser Support
 
-### Metrics & KPIs
+- **Chrome**: 80+
+- **Firefox**: 75+
+- **Safari**: 13+
+- **Edge**: 80+
 
-#### Customer Validation Metrics
-- **Customer Interviews**: Number and quality of customer conversations
-- **Problem Validation**: Percentage of customers confirming pain points
-- **Solution Fit**: Customer willingness to pay and adopt
-- **Market Size**: Validated market opportunity size
+## Performance
 
-#### Technical Validation Metrics
-- **Technical Feasibility**: Ability to build and scale the solution
-- **Performance Metrics**: Speed, reliability, and scalability
-- **Integration Success**: Ease of integration with existing systems
-- **Security Compliance**: Meeting security and compliance requirements
+- **Load Time**: Optimized for fast loading (< 2 seconds)
+- **Responsive**: Smooth performance on mobile devices
+- **Memory**: Efficient chart rendering and data management
+- **Accessibility**: WCAG 2.1 AA compliant
 
-#### Business Validation Metrics
-- **Revenue Potential**: Validated revenue opportunity
-- **Customer Acquisition**: Cost and efficiency of customer acquisition
-- **Retention Rates**: Customer satisfaction and retention
-- **Unit Economics**: Profitability and sustainability metrics
+## Security Considerations
 
-### Tools & Resources
+- **Data Protection**: No sensitive data stored in localStorage
+- **XSS Prevention**: Proper input sanitization
+- **CORS**: Configure for cross-origin requests if needed
+- **HTTPS**: Recommended for production deployment
 
-#### Prototyping Tools
-- **Design**: Figma, Sketch, Adobe XD
-- **Prototyping**: InVision, Marvel, Framer
-- **Development**: React, Vue.js, Node.js
-- **Analytics**: Mixpanel, Amplitude, Google Analytics
+## Deployment
 
-#### Customer Research Tools
-- **Survey Tools**: SurveyMonkey, Typeform, Qualtrics
-- **Interview Platforms**: Calendly, Zoom, Microsoft Teams
-- **CRM**: Salesforce, HubSpot, Pipedrive
-- **Analytics**: Tableau, Power BI, Google Data Studio
+### Static Hosting
+1. Upload all files to your web server
+2. Ensure proper MIME types are set
+3. Configure HTTPS for security
+4. Set up caching headers for performance
 
-#### Project Management
-- **Agile Tools**: Jira, Trello, Asana
-- **Communication**: Slack, Microsoft Teams, Discord
-- **Documentation**: Notion, Confluence, Google Docs
-- **Version Control**: Git, GitHub, GitLab
+### CDN Integration
+- Consider using a CDN for faster global access
+- Implement proper cache headers
+- Monitor performance metrics
 
-### Next Steps
-
-1. **Immediate Actions** (This Week)
-   - Schedule customer discovery interviews
-   - Set up project management tools
-   - Define initial problem statement
-
-2. **Short-term Goals** (Next 2-4 Weeks)
-   - Complete customer research phase
-   - Define MVP features
-   - Create initial prototypes
-
-3. **Medium-term Objectives** (Next 2-3 Months)
-   - Validate with pilot customers
-   - Iterate based on feedback
-   - Prepare for market entry
-
-4. **Long-term Vision** (Next 6-12 Months)
-   - Launch to market
-   - Scale customer base
-   - Optimize business model
-
-This B2B prototyping strategy provides a structured approach to developing and validating business solutions in a complex enterprise environment, ensuring rapid iteration while maintaining stakeholder alignment and market focus.
+### Environment Variables
+For production deployment, consider:
+- API endpoint configuration
+- Authentication tokens
+- Analytics tracking
+- Error monitoring
 
 ## Contributing
 
-Guidelines for contributing to the project.
-
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Contact
+## Support
 
-Your Name - your.email@example.com
+For technical support or questions:
+- **Documentation**: Check this README and inline code comments
+- **Issues**: Report bugs or feature requests via GitHub issues
+- **Contact**: Reach out to the development team
 
-Project Link: [https://github.com/username/project-name](https://github.com/username/project-name)
+## Roadmap
+
+### Planned Features
+- [ ] Real-time WebSocket updates
+- [ ] Advanced filtering and search
+- [ ] Custom dashboard layouts
+- [ ] Mobile app version
+- [ ] Advanced analytics
+- [ ] Multi-language support
+- [ ] Integration with external tools
+- [ ] Automated reporting
+
+### Performance Improvements
+- [ ] Lazy loading for large datasets
+- [ ] Virtual scrolling for long lists
+- [ ] Service worker for offline support
+- [ ] Progressive Web App features
+
+---
+
+**Built with ❤️ for GYG suppliers**

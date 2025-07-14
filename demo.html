@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYG Supplier Dashboard - Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .demo-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .demo-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .demo-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-features {
+            list-style: none;
+        }
+
+        .demo-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-features li i {
+            color: #10b981;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .demo-container {
+                padding: 1rem;
+            }
+
+            .demo-header h1 {
+                font-size: 2rem;
+            }
+
+            .demo-header p {
+                font-size: 1rem;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>GYG Supplier Dashboard</h1>
+            <p>A modern, responsive web dashboard for monitoring reservation system performance and integration status</p>
+        </div>
+
+        <div class="demo-stats">
+            <div class="stat-item">
+                <div class="stat-number">94.8%</div>
+                <div class="stat-label">Average Uptime</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1.5%</div>
+                <div class="stat-label">Error Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$8,450</div>
+                <div class="stat-label">Lost Revenue (30d)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">65th</div>
+                <div class="stat-label">Performance Percentile</div>
+            </div>
+        </div>
+
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3><i class="fas fa-chart-line"></i> Performance Metrics</h3>
+                <p>Real-time monitoring of uptime, error rates, and revenue impact with color-coded status indicators.</p>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i> Uptime tracking (1d, 7d, 30d)</li>
+                    <li><i class="fas fa-check"></i> Error rate analysis</li>
+                    <li><i class="fas fa-check"></i> Revenue impact calculations</li>
+                    <li><i class="fas fa-check"></i> Trend indicators</li>
+                </ul>
+            </div>
+
+            <div class="demo-card">
+                <h3><i class="fas fa-chart-bar"></i> Interactive Charts</h3>
+                <p>Professional data visualizations with downloadable charts and customizable time periods.</p>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i> Uptime trend lines</li>
+                    <li><i class="fas fa-check"></i> Error rate patterns</li>
+                    <li><i class="fas fa-check"></i> Revenue impact timeline</li>
+                    <li><i class="fas fa-check"></i> PNG export functionality</li>
+                </ul>
+            </div>
+
+            <div class="demo-card">
+                <h3><i class="fas fa-trophy"></i> Competitive Analysis</h3>
+                <p>Benchmark your performance against industry averages and top performers.</p>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i> Industry comparisons</li>
+                    <li><i class="fas fa-check"></i> Percentile rankings</li>
+                    <li><i class="fas fa-check"></i> Top performers analysis</li>
+                    <li><i class="fas fa-check"></i> Revenue impact vs peers</li>
+                </ul>
+            </div>
+
+            <div class="demo-card">
+                <h3><i class="fas fa-lightbulb"></i> Smart Recommendations</h3>
+                <p>Actionable insights and priority-ranked improvement suggestions.</p>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i> Priority-ranked actions</li>
+                    <li><i class="fas fa-check"></i> Specific improvement suggestions</li>
+                    <li><i class="fas fa-check"></i> Resource links</li>
+                    <li><i class="fas fa-check"></i> Technical support access</li>
+                </ul>
+            </div>
+
+            <div class="demo-card">
+                <h3><i class="fas fa-palette"></i> Modern Design</h3>
+                <p>Professional, responsive design with dark/light mode and smooth animations.</p>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i> Responsive layout</li>
+                    <li><i class="fas fa-check"></i> Dark/light theme toggle</li>
+                    <li><i class="fas fa-check"></i> Smooth animations</li>
+                    <li><i class="fas fa-check"></i> Accessibility features</li>
+                </ul>
+            </div>
+
+            <div class="demo-card">
+                <h3><i class="fas fa-download"></i> Export & Share</h3>
+                <p>Comprehensive export options and sharing capabilities for reports and data.</p>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i> PDF report generation</li>
+                    <li><i class="fas fa-check"></i> CSV data export</li>
+                    <li><i class="fas fa-check"></i> Chart downloads</li>
+                    <li><i class="fas fa-check"></i> Share functionality</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="index.html" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Launch Dashboard
+            </a>
+        </div>
+    </div>
+</body>
+</html>
