@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYG Supplier Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <div class="supplier-info">
+                <div class="logo-placeholder">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="supplier-details">
+                    <h1>Acme Adventures</h1>
+                    <p class="supplier-id">Supplier ID: SUP-2024-001</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="datetime">
+                    <i class="fas fa-clock"></i>
+                    <span id="current-datetime"></span>
+                </div>
+                <div class="status-indicator online">
+                    <i class="fas fa-circle"></i>
+                    <span>Online</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard">
+        <!-- Performance Metrics Cards -->
+        <section class="metrics-section">
+            <h2>Performance Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card uptime">
+                    <div class="metric-header">
+                        <h3>Uptime</h3>
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="metric-values">
+                        <div class="metric-item">
+                            <span class="period">1 Day</span>
+                            <span class="value" data-value="98.5">98.5%</span>
+                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="period">7 Days</span>
+                            <span class="value" data-value="96.2">96.2%</span>
+                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="period">30 Days</span>
+                            <span class="value" data-value="94.8">94.8%</span>
+                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card error-rate">
+                    <div class="metric-header">
+                        <h3>Error Rate</h3>
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="metric-values">
+                        <div class="metric-item">
+                            <span class="period">1 Day</span>
+                            <span class="value" data-value="0.8">0.8%</span>
+                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="period">7 Days</span>
+                            <span class="value" data-value="1.2">1.2%</span>
+                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="period">30 Days</span>
+                            <span class="value" data-value="1.5">1.5%</span>
+                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card revenue-impact">
+                    <div class="metric-header">
+                        <h3>Lost Revenue</h3>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="metric-values">
+                        <div class="metric-item">
+                            <span class="period">1 Day</span>
+                            <span class="value" data-value="245">$245</span>
+                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="period">7 Days</span>
+                            <span class="value" data-value="1890">$1,890</span>
+                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="period">30 Days</span>
+                            <span class="value" data-value="8450">$8,450</span>
+                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Uptime Trends</h3>
+                    <div class="chart-controls">
+                        <select id="uptime-period" class="period-selector">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30">Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                        </select>
+                        <button class="download-btn" onclick="downloadChart('uptime-chart')">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <canvas id="uptime-chart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Error Rate Patterns</h3>
+                    <div class="chart-controls">
+                        <select id="error-period" class="period-selector">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30">Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                        </select>
+                        <button class="download-btn" onclick="downloadChart('error-chart')">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <canvas id="error-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Benchmarking Section -->
+        <section class="benchmarking-section">
+            <h2>Competitive Analysis</h2>
+            <div class="benchmark-grid">
+                <div class="benchmark-card">
+                    <h3>Your Performance vs Competition</h3>
+                    <div class="benchmark-comparison">
+                        <div class="benchmark-item">
+                            <span class="label">Your Uptime</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 94.8%"></div>
+                            </div>
+                            <span class="percentage">94.8%</span>
+                        </div>
+                        <div class="benchmark-item">
+                            <span class="label">Industry Average</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 95.3%"></div>
+                            </div>
+                            <span class="percentage">95.3%</span>
+                        </div>
+                        <div class="benchmark-item">
+                            <span class="label">Top Performers</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 98.2%"></div>
+                            </div>
+                            <span class="percentage">98.2%</span>
+                        </div>
+                    </div>
+                    <div class="percentile-ranking">
+                        <span class="ranking">You're in the <strong>65th percentile</strong></span>
+                    </div>
+                </div>
+
+                <div class="benchmark-card">
+                    <h3>Revenue Impact vs Peers</h3>
+                    <div class="revenue-comparison">
+                        <div class="comparison-item">
+                            <span class="label">Your Lost Revenue (30d)</span>
+                            <span class="amount">$8,450</span>
+                        </div>
+                        <div class="comparison-item">
+                            <span class="label">Average Lost Revenue</span>
+                            <span class="amount">$6,200</span>
+                        </div>
+                        <div class="comparison-item">
+                            <span class="label">Potential Recovery</span>
+                            <span class="amount positive">$2,250</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section -->
+        <section class="recommendations-section">
+            <h2>What You Can Do</h2>
+            <div class="recommendations-grid">
+                <div class="recommendation-card high-priority">
+                    <div class="priority-badge">High Priority</div>
+                    <h3>Optimize API Response Times</h3>
+                    <p>Your average response time is 2.3s, which is 40% slower than the industry average. Consider implementing caching strategies.</p>
+                    <div class="recommendation-actions">
+                        <a href="#" class="action-link"><i class="fas fa-book"></i> Documentation</a>
+                        <a href="#" class="action-link"><i class="fas fa-headset"></i> Contact Support</a>
+                    </div>
+                </div>
+
+                <div class="recommendation-card medium-priority">
+                    <div class="priority-badge">Medium Priority</div>
+                    <h3>Implement Retry Logic</h3>
+                    <p>Add exponential backoff retry logic to handle temporary network issues and reduce error rates.</p>
+                    <div class="recommendation-actions">
+                        <a href="#" class="action-link"><i class="fas fa-code"></i> Code Examples</a>
+                        <a href="#" class="action-link"><i class="fas fa-video"></i> Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="recommendation-card low-priority">
+                    <div class="priority-badge">Low Priority</div>
+                    <h3>Monitor Peak Hours</h3>
+                    <p>Your system shows higher error rates during peak booking hours (2-4 PM). Consider scaling resources during these times.</p>
+                    <div class="recommendation-actions">
+                        <a href="#" class="action-link"><i class="fas fa-chart-line"></i> Analytics</a>
+                        <a href="#" class="action-link"><i class="fas fa-cog"></i> Settings</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Export/Share Section -->
+        <section class="export-section">
+            <h2>Export & Share</h2>
+            <div class="export-options">
+                <button class="export-btn" onclick="exportDashboard('pdf')">
+                    <i class="fas fa-file-pdf"></i>
+                    Download Full Report (PDF)
+                </button>
+                <button class="export-btn" onclick="exportDashboard('csv')">
+                    <i class="fas fa-file-csv"></i>
+                    Export Data (CSV)
+                </button>
+                <button class="export-btn" onclick="shareReport()">
+                    <i class="fas fa-share-alt"></i>
+                    Share Report
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <button id="theme-toggle-btn" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading dashboard data...</p>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

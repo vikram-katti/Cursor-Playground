@@ -1,0 +1,43 @@
+{
+  "name": "gyg-supplier-dashboard",
+  "version": "1.0.0",
+  "description": "A modern, responsive web dashboard for GYG suppliers to monitor their reservation system performance and integration status",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'No build process required - static files only'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linting configured'"
+  },
+  "keywords": [
+    "dashboard",
+    "supplier",
+    "monitoring",
+    "performance",
+    "analytics",
+    "web",
+    "responsive",
+    "gyg"
+  ],
+  "author": "GYG Development Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gyg/supplier-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gyg/supplier-dashboard/issues"
+  },
+  "homepage": "https://github.com/gyg/supplier-dashboard#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
