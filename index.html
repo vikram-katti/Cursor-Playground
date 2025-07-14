@@ -40,7 +40,8 @@
     <main class="dashboard">
         <!-- Performance Metrics Cards -->
         <section class="metrics-section">
-            <h2>Performance Metrics</h2>
+            <h2>Tour Performance Overview</h2>
+            <p class="metrics-description">Monitor the performance of your tours with real-time data on uptime, reservation errors, and potential revenue loss.</p>
             <div class="metrics-grid">
                 <div class="metric-card uptime">
                     <div class="metric-header">
@@ -49,67 +50,48 @@
                     </div>
                     <div class="metric-values">
                         <div class="metric-item">
-                            <span class="period">1 Day</span>
-                            <span class="value" data-value="98.5">98.5%</span>
-                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                            <span class="period">Last 24 Hours</span>
+                            <span class="value" id="uptime-1d">--%</span>
+                            <span class="trend" id="uptime-1d-trend"></span>
+                            <span class="revenue-loss" id="revenue-uptime-1d">Est. Revenue Loss: $--</span>
                         </div>
                         <div class="metric-item">
-                            <span class="period">7 Days</span>
-                            <span class="value" data-value="96.2">96.2%</span>
-                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
+                            <span class="period">Last 7 Days</span>
+                            <span class="value" id="uptime-7d">--%</span>
+                            <span class="trend" id="uptime-7d-trend"></span>
+                            <span class="revenue-loss" id="revenue-uptime-7d">Est. Revenue Loss: $--</span>
                         </div>
                         <div class="metric-item">
-                            <span class="period">30 Days</span>
-                            <span class="value" data-value="94.8">94.8%</span>
-                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
+                            <span class="period">Last 30 Days</span>
+                            <span class="value" id="uptime-30d">--%</span>
+                            <span class="trend" id="uptime-30d-trend"></span>
+                            <span class="revenue-loss" id="revenue-uptime-30d">Est. Revenue Loss: $--</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="metric-card error-rate">
                     <div class="metric-header">
-                        <h3>Error Rate</h3>
+                        <h3>Reservation Errors</h3>
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
                     <div class="metric-values">
                         <div class="metric-item">
-                            <span class="period">1 Day</span>
-                            <span class="value" data-value="0.8">0.8%</span>
-                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
+                            <span class="period">Last 24 Hours</span>
+                            <span class="value" id="error-1d">--%</span>
+                            <span class="trend" id="error-1d-trend"></span>
+                            <span class="revenue-loss" id="revenue-error-1d">Est. Revenue Loss: $--</span>
                         </div>
                         <div class="metric-item">
-                            <span class="period">7 Days</span>
-                            <span class="value" data-value="1.2">1.2%</span>
-                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                            <span class="period">Last 7 Days</span>
+                            <span class="value" id="error-7d">--%</span>
+                            <span class="trend" id="error-7d-trend"></span>
+                            <span class="revenue-loss" id="revenue-error-7d">Est. Revenue Loss: $--</span>
                         </div>
                         <div class="metric-item">
-                            <span class="period">30 Days</span>
-                            <span class="value" data-value="1.5">1.5%</span>
-                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="metric-card revenue-impact">
-                    <div class="metric-header">
-                        <h3>Lost Revenue</h3>
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="metric-values">
-                        <div class="metric-item">
-                            <span class="period">1 Day</span>
-                            <span class="value" data-value="245">$245</span>
-                            <span class="trend down"><i class="fas fa-arrow-down"></i></span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="period">7 Days</span>
-                            <span class="value" data-value="1890">$1,890</span>
-                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="period">30 Days</span>
-                            <span class="value" data-value="8450">$8,450</span>
-                            <span class="trend up"><i class="fas fa-arrow-up"></i></span>
+                            <span class="period">Last 30 Days</span>
+                            <span class="value" id="error-30d">--%</span>
+                            <span class="trend" id="error-30d-trend"></span>
+                            <span class="revenue-loss" id="revenue-error-30d">Est. Revenue Loss: $--</span>
                         </div>
                     </div>
                 </div>
