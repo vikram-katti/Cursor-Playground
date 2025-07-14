@@ -683,3 +683,42 @@ a:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
+
+.metrics-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+.metric-card .revenue-loss {
+    font-size: 0.95rem;
+    color: var(--warning-color);
+    margin-top: 0.2rem;
+    display: block;
+}
+.metric-card .trend {
+    font-size: 0.95rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
+.metric-card .trend.up {
+    color: var(--success-color);
+}
+.metric-card .trend.down {
+    color: var(--error-color);
+}
+.metric-card .metric-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.metric-card .metric-item:last-child {
+    border-bottom: none;
+}
+/* Chart.js dotted line legend style */
+.chartjs-legend li span[style*='dashed'] {
+    border-bottom: 2px dashed #64748b !important;
+}

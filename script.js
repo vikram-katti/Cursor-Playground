@@ -13,6 +13,7 @@ class DashboardManager {
         this.setupEventListeners();
         this.hideLoadingOverlay();
         this.startRealTimeUpdates();
+        this.updateMetricCards();
     }
 
     setupTheme() {
@@ -67,34 +68,48 @@ class DashboardManager {
     createUptimeChart() {
         const ctx = document.getElementById('uptime-chart');
         if (!ctx) return;
-
-        const data = dashboardData.timeSeriesData.uptime['7'];
-        
+        const period = document.getElementById('uptime-period').value;
+        const data = dashboardData.timeSeriesData.uptime[period];
+        // Example benchmark: industry average for the same period
+        const benchmarkValue = dashboardData.benchmarking.uptime.industryAverage;
+        const benchmarkData = data.map(() => benchmarkValue);
         this.charts.uptime = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: data.map(item => moment(item.date).format('MMM DD')),
-                datasets: [{
-                    label: 'Uptime (%)',
-                    data: data.map(item => item.value),
-                    borderColor: '#2563eb',
-                    backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#2563eb',
-                    pointBorderColor: '#ffffff',
-                    pointBorderWidth: 2,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
-                }]
+                datasets: [
+                    {
+                        label: 'Uptime (%)',
+                        data: data.map(item => item.value),
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#2563eb',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: 'Benchmark',
+                        data: benchmarkData,
+                        borderColor: '#64748b',
+                        borderWidth: 2,
+                        borderDash: [6, 6],
+                        fill: false,
+                        pointRadius: 0,
+                        pointHoverRadius: 0
+                    }
+                ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false
+                        display: true
                     },
                     tooltip: {
                         mode: 'index',
@@ -142,34 +157,48 @@ class DashboardManager {
     createErrorChart() {
         const ctx = document.getElementById('error-chart');
         if (!ctx) return;
-
-        const data = dashboardData.timeSeriesData.errorRate['7'];
-        
+        const period = document.getElementById('error-period').value;
+        const data = dashboardData.timeSeriesData.errorRate[period];
+        // Example benchmark: industry average for the same period
+        const benchmarkValue = dashboardData.benchmarking.errorRate.industryAverage;
+        const benchmarkData = data.map(() => benchmarkValue);
         this.charts.error = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: data.map(item => moment(item.date).format('MMM DD')),
-                datasets: [{
-                    label: 'Error Rate (%)',
-                    data: data.map(item => item.value),
-                    borderColor: '#ef4444',
-                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#ef4444',
-                    pointBorderColor: '#ffffff',
-                    pointBorderWidth: 2,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
-                }]
+                datasets: [
+                    {
+                        label: 'Error Rate (%)',
+                        data: data.map(item => item.value),
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#ef4444',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: 'Benchmark',
+                        data: benchmarkData,
+                        borderColor: '#64748b',
+                        borderWidth: 2,
+                        borderDash: [6, 6],
+                        fill: false,
+                        pointRadius: 0,
+                        pointHoverRadius: 0
+                    }
+                ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false
+                        display: true
                     },
                     tooltip: {
                         mode: 'index',
@@ -325,6 +354,42 @@ class DashboardManager {
                 statusIndicator.querySelector('span').textContent = isOnline ? 'Online' : 'Offline';
             }
         }
+    }
+
+    // Add this to update metric cards with values and revenue loss
+    updateMetricCards() {
+        // Uptime
+        const uptime1d = dashboardData.metrics.uptime['1d'];
+        const uptime7d = dashboardData.metrics.uptime['7d'];
+        const uptime30d = dashboardData.metrics.uptime['30d'];
+        const uptimeTrends = [uptime1d, uptime7d, uptime30d];
+        const uptimeBench = dashboardData.benchmarking.uptime.industryAverage;
+        const revenueUptime = [dashboardData.metrics.lostRevenue['1d'], dashboardData.metrics.lostRevenue['7d'], dashboardData.metrics.lostRevenue['30d']];
+        ['1d','7d','30d'].forEach((period, i) => {
+            document.getElementById(`uptime-${period}`).textContent = uptimeTrends[i] + '%';
+            document.getElementById(`revenue-uptime-${period}`).textContent = `Est. Revenue Loss: $${revenueUptime[i].toLocaleString()}`;
+            const trend = uptimeTrends[i] - uptimeBench;
+            const trendElem = document.getElementById(`uptime-${period}-trend`);
+            if (trendElem) {
+                trendElem.innerHTML = trend >= 0 ? `<span class='trend up'><i class='fas fa-arrow-up'></i> +${trend.toFixed(1)}%</span>` : `<span class='trend down'><i class='fas fa-arrow-down'></i> ${trend.toFixed(1)}%</span>`;
+            }
+        });
+        // Error Rate
+        const error1d = dashboardData.metrics.errorRate['1d'];
+        const error7d = dashboardData.metrics.errorRate['7d'];
+        const error30d = dashboardData.metrics.errorRate['30d'];
+        const errorTrends = [error1d, error7d, error30d];
+        const errorBench = dashboardData.benchmarking.errorRate.industryAverage;
+        const revenueError = [dashboardData.metrics.lostRevenue['1d'], dashboardData.metrics.lostRevenue['7d'], dashboardData.metrics.lostRevenue['30d']];
+        ['1d','7d','30d'].forEach((period, i) => {
+            document.getElementById(`error-${period}`).textContent = errorTrends[i] + '%';
+            document.getElementById(`revenue-error-${period}`).textContent = `Est. Revenue Loss: $${revenueError[i].toLocaleString()}`;
+            const trend = errorTrends[i] - errorBench;
+            const trendElem = document.getElementById(`error-${period}-trend`);
+            if (trendElem) {
+                trendElem.innerHTML = trend >= 0 ? `<span class='trend up'><i class='fas fa-arrow-up'></i> +${trend.toFixed(1)}%</span>` : `<span class='trend down'><i class='fas fa-arrow-down'></i> ${trend.toFixed(1)}%</span>`;
+            }
+        });
     }
 }
 
