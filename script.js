@@ -9,6 +9,7 @@ class DashboardManager {
         this.initializeCharts();
         this.setupEventListeners();
         this.hideLoadingOverlay();
+        this.updateMetricCards();
     }
 
     initializeCharts() {
@@ -16,6 +17,38 @@ class DashboardManager {
         this.createSourceMarketsChart();
         this.createRevenuePurchaseChart();
         this.createVisitorsCRChart();
+    }
+
+    updateMetricCards() {
+        // Sample uptime data
+        const uptimeData = {
+            '1d': 98.5,
+            '7d': 97.2,
+            '30d': 96.8
+        };
+
+        // Sample reservation error data
+        const errorData = {
+            '1d': 1.2,
+            '7d': 1.8,
+            '30d': 2.1
+        };
+
+        // Update uptime metrics
+        Object.keys(uptimeData).forEach(period => {
+            const element = document.getElementById(`uptime-${period}`);
+            if (element) {
+                element.textContent = `${uptimeData[period]}%`;
+            }
+        });
+
+        // Update error metrics
+        Object.keys(errorData).forEach(period => {
+            const element = document.getElementById(`error-${period}`);
+            if (element) {
+                element.textContent = `${errorData[period]}%`;
+            }
+        });
     }
 
     createRevenueTravelChart() {

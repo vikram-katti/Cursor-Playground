@@ -352,7 +352,7 @@ body {
 
 .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
@@ -405,6 +405,8 @@ body {
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 1px 3px var(--shadow-light);
+    height: 400px;
+    position: relative;
 }
 
 .chart-container h3 {
@@ -412,6 +414,11 @@ body {
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1rem;
+}
+
+.chart-container canvas {
+    max-height: 320px !important;
+    width: 100% !important;
 }
 
 /* Loading Overlay */
@@ -485,6 +492,10 @@ body {
     .sub-nav-content {
         gap: 1rem;
     }
+    
+    .chart-container {
+        height: 350px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -499,5 +510,9 @@ body {
     
     .metric-value {
         font-size: 1.5rem;
+    }
+    
+    .chart-container {
+        height: 300px;
     }
 }
