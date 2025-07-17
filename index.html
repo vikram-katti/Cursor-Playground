@@ -2,20 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes">
+    <meta name="description" content="GYG Supplier Dashboard - Analytics and Performance Monitoring">
+    <meta name="theme-color" content="#2563eb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GYG Supplier Dashboard</title>
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" defer></script>
+    
+    <!-- Error handling -->
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+        });
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Unhandled promise rejection:', e.reason);
+        });
+    </script>
 </head>
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" style="position: absolute; top: -40px; left: 6px; background: #2563eb; color: white; padding: 8px; text-decoration: none; border-radius: 4px; z-index: 10000;">Skip to main content</a>
+    
     <!-- Top Header -->
-    <div class="top-header">
+    <header class="top-header" role="banner">
         <div class="top-header-content">
             <div class="logo-section">
-                <div class="logo">
+                <div class="logo" role="img" aria-label="Get Your Guide">
                     <span>GET YOUR GUIDE</span>
                 </div>
                 <div class="supplier-info">
@@ -24,36 +51,36 @@
                 </div>
             </div>
             <div class="top-header-right">
-                <div class="language-selector">
-                    <i class="fas fa-flag"></i>
+                <div class="language-selector" role="button" tabindex="0" aria-label="Language selector">
+                    <i class="fas fa-flag" aria-hidden="true"></i>
                     <span>US</span>
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
     <!-- Main Navigation -->
-    <nav class="main-nav">
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <div class="nav-links">
                 <a href="#" class="nav-link">Home</a>
                 <a href="#" class="nav-link">Create</a>
                 <a href="#" class="nav-link">Manage</a>
                 <a href="#" class="nav-link">Bookings</a>
-                <a href="#" class="nav-link active">Performance</a>
+                <a href="#" class="nav-link active" aria-current="page">Performance</a>
                 <a href="#" class="nav-link">Finance</a>
             </div>
-            <div class="user-profile">
-                <div class="user-avatar">YA</div>
+            <div class="user-profile" role="button" tabindex="0" aria-label="User profile menu">
+                <div class="user-avatar" aria-hidden="true">YA</div>
                 <span class="user-name">Vikram</span>
-                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </div>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <div class="page-header">
+    <section class="page-header">
         <div class="page-header-content">
             <div class="page-title-section">
                 <h1>Analytics</h1>
@@ -61,82 +88,89 @@
             </div>
             <div class="page-actions">
                 <a href="#" class="pdf-reports-link">
-                    <i class="fas fa-download"></i>
+                    <i class="fas fa-download" aria-hidden="true"></i>
                     PDF reports
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Filters Section -->
-    <div class="filters-section">
+    <section class="filters-section" aria-label="Data filters">
         <div class="filters-content">
             <h3>Filters</h3>
             <div class="filters-row">
                 <div class="filter-item">
-                    <select class="filter-dropdown">
+                    <label for="product-filter" class="sr-only">Product filter</label>
+                    <select id="product-filter" class="filter-dropdown">
                         <option>All products</option>
                     </select>
                 </div>
                 <div class="filter-item">
-                    <div class="date-range-picker">
+                    <button type="button" class="date-range-picker" aria-label="Date range picker">
                         <span>Jun 14, 2025 - Jul 14, 2025</span>
-                        <i class="fas fa-calendar"></i>
-                    </div>
+                        <i class="fas fa-calendar" aria-hidden="true"></i>
+                    </button>
                 </div>
                 <div class="filter-item">
                     <label class="toggle-label">
                         <span>Show same time, last year</span>
                         <div class="toggle-switch">
-                            <input type="checkbox" id="last-year-toggle">
-                            <span class="toggle-slider"></span>
+                            <input type="checkbox" id="last-year-toggle" aria-describedby="last-year-toggle-desc">
+                            <span class="toggle-slider" aria-hidden="true"></span>
                         </div>
+                        <span id="last-year-toggle-desc" class="sr-only">Toggle to compare with same period last year</span>
                     </label>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Sub Navigation -->
-    <div class="sub-nav">
+    <nav class="sub-nav" role="navigation" aria-label="Analytics sections">
         <div class="sub-nav-content">
-            <a href="#" class="sub-nav-link active">Sales & revenue</a>
+            <a href="#" class="sub-nav-link active" aria-current="page">Sales & revenue</a>
             <a href="#" class="sub-nav-link">Customer rating</a>
             <a href="#" class="sub-nav-link">Your cancellations</a>
             <a href="#" class="sub-nav-link">Product performance</a>
         </div>
-    </div>
+    </nav>
 
     <!-- Main Dashboard Content -->
-    <main class="dashboard">
+    <main id="main-content" class="dashboard" role="main">
         <!-- Key Metrics Section -->
-        <section class="metrics-section">
+        <section class="metrics-section" aria-labelledby="metrics-heading">
+            <h2 id="metrics-heading" class="sr-only">Key Performance Metrics</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-label">
                         <span>Revenue</span>
-                        <i class="fas fa-info-circle"></i>
+                        <i class="fas fa-info-circle" aria-describedby="revenue-info"></i>
+                        <span id="revenue-info" class="sr-only">Total revenue for the selected period</span>
                     </div>
                     <div class="metric-value">€3,530</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">
                         <span>Tickets</span>
-                        <i class="fas fa-info-circle"></i>
+                        <i class="fas fa-info-circle" aria-describedby="tickets-info"></i>
+                        <span id="tickets-info" class="sr-only">Total tickets sold for the selected period</span>
                     </div>
                     <div class="metric-value">197</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">
                         <span>Conversion rate</span>
-                        <i class="fas fa-info-circle"></i>
+                        <i class="fas fa-info-circle" aria-describedby="conversion-info"></i>
+                        <span id="conversion-info" class="sr-only">Percentage of visitors who made a purchase</span>
                     </div>
                     <div class="metric-value">1.87%</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">
                         <span>Bookings</span>
-                        <i class="fas fa-info-circle"></i>
+                        <i class="fas fa-info-circle" aria-describedby="bookings-info"></i>
+                        <span id="bookings-info" class="sr-only">Total number of bookings for the selected period</span>
                     </div>
                     <div class="metric-value">85</div>
                 </div>
@@ -144,35 +178,74 @@
         </section>
 
         <!-- Charts Section -->
-        <section class="charts-section">
+        <section class="charts-section" aria-labelledby="charts-heading">
+            <h2 id="charts-heading" class="sr-only">Performance Charts</h2>
             <div class="charts-grid">
                 <div class="chart-container">
                     <h3>Revenue and tickets booked by travel date</h3>
-                    <canvas id="revenue-travel-chart"></canvas>
+                    <canvas id="revenue-travel-chart" aria-label="Line chart showing revenue and tickets booked by travel date"></canvas>
                 </div>
                 <div class="chart-container">
                     <h3>Top 5 international source markets by revenue</h3>
-                    <canvas id="source-markets-chart"></canvas>
+                    <canvas id="source-markets-chart" aria-label="Bar chart showing top 5 international source markets by revenue"></canvas>
                 </div>
                 <div class="chart-container">
                     <h3>Revenue and tickets booked by date of purchase</h3>
-                    <canvas id="revenue-purchase-chart"></canvas>
+                    <canvas id="revenue-purchase-chart" aria-label="Line chart showing revenue and tickets booked by date of purchase"></canvas>
                 </div>
                 <div class="chart-container">
                     <h3>Visitors and conversion rate (CR) by date of purchase</h3>
-                    <canvas id="visitors-cr-chart"></canvas>
+                    <canvas id="visitors-cr-chart" aria-label="Line chart showing visitors and conversion rate by date of purchase"></canvas>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Loading Overlay -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="loading-spinner"></div>
+    <div id="loading-overlay" class="loading-overlay" aria-live="polite" aria-label="Loading dashboard">
+        <div class="loading-spinner" aria-hidden="true"></div>
         <p>Loading dashboard data...</p>
     </div>
 
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+    <!-- Screen reader only styles -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="data.js" defer></script>
+    <script src="script.js" defer></script>
+    
+    <!-- Service Worker registration for offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Only register service worker in production
+                if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then(function(registration) {
+                            console.log('SW registered with scope: ', registration.scope);
+                        })
+                        .catch(function(error) {
+                            console.log('SW registration failed: ', error);
+                        });
+                }
+            });
+        }
+    </script>
 </body>
 </html>
